@@ -1,0 +1,33 @@
+syntax on
+set background=dark
+set autoindent
+set smartindent
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+"set mouse=a
+"set clipboard=unnamed
+
+set modeline
+
+"Test for gitcommit textwidth
+" See https://wincent.com/blog/automatic-wrapping-of-git-commit-messages-using-vim
+"http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+filetype indent plugin on
+
+" Tab settings for Makefiles
+autocmd FileType make setlocal noexpandtab
+" autocmd BufEnter ?akefile* set noet ts=4 sts=4 sw=4
+
+" NOTE: necessary to add this line in .gvimrc too
+highlight ExtraWhitespace ctermbg=red guibg=red
+" Show trailing whitespace:
+"match ExtraWhitespace /\s\+$/
+"will match trailing whitespace, except when typing at the end of a line
+match ExtraWhitespace /\s\+\%#\@<!$/
+
+
+let g:netrw_sort_sequence = '[\/]$,\.h$,\.c$,\.xc$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$'
+
