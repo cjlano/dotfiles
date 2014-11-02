@@ -1,7 +1,7 @@
 ! xterm ----------------------------------------------------------------------
 
 !xterm*VT100.geometry:     80x25
-xterm*faceName:           Terminus:style=Regular:size=9
+xterm*faceName:           Terminus:style=Regular:size=12
 !xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
 xterm*font:               -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 xterm*dynamicColors:      true
@@ -123,7 +123,7 @@ URxvt*foreground:                     white
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
-URxvt*font:                           xft:Terminus:size=9
+URxvt*font:                           xft:Terminus:size=12
 ! URxvt*boldFont:                       fontname
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname

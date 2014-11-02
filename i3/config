@@ -19,7 +19,7 @@ set $mod Mod4
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
-font pango:Terminus 11px
+font pango:Terminus 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -149,7 +149,7 @@ bindsym $mod+r mode "resize"
 bar {
         #status_command i3status
         status_command python ~/.i3/status.py
-        output LVDS-0
+        output eDP1
 }
 bar {
         status_command i3status --config ~/.i3status_light.conf

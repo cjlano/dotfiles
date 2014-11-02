@@ -1,6 +1,6 @@
 [global]
     #font = Monospace 8
-    font = Terminus 9
+    font = Terminus 11
 
     # allow a small subset of html markup:
     # <b>bold</b>

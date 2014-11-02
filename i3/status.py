@@ -48,7 +48,7 @@ status.register("disk",
 
 status.register("backlight",
     format="\u263c{brightness}%", #\u263c: white sun with rays
-    backlight="psb-bl")
+    backlight="intel_backlight")
 
 # Note: requires pyalsaaudio (AUR)
 #status.register("alsa",

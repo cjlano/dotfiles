@@ -17,9 +17,6 @@ xset -b
 # Load Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-# Set brightness
-echo 10 > /sys/class/backlight/psb-bl/brightness
-
 exec i3
 # exec gnome-session
 # exec startkde
