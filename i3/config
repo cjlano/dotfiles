@@ -148,7 +148,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         #status_command i3status
-        status_command i3pystatus
+        status_command python ~/.i3/status.py
         output LVDS-0
 }
 bar {
@@ -179,3 +179,5 @@ bindsym $mod+y move workspace to output right
 
 # Assign Firefox to workspace 2 (use xprop to get WM_CLASS(STRING))
 assign [class="^Firefox$"] 2
+
+exec dunst
