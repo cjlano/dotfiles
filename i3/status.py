@@ -14,8 +14,8 @@ status.register("temp",
 # the battery status checker module
 status.register("battery",
     format = "{status}{percentage:.0f}% {remaining}",
-    alert=False,
-    alert_percentage=25,
+    alert=True,
+    alert_percentage=8,
     status={
         "DIS": "↓",
         "CHR": "↑",
