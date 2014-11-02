@@ -23,15 +23,24 @@ status.register("battery",
         },
     )
 
-status.register("wireless",
-    interface="wlo1",
-    format_up = "W: ({quality:.0f}% at {essid}) {v4}",
-    format_down = "W: down")
 
-status.register("network",
-    interface="eno1",
-    format_up = "E: {v4}",
-    format_down = "E: down")
+import os
+netdir = '/sys/class/net/'
+wireless = [iface for iface in os.listdir(netdir) if os.path.isdir(netdir + iface + '/wireless')]
+wired = [iface for iface in os.listdir(netdir) if iface not in wireless + ['lo']]
+
+for iface in wired:
+    status.register("network",
+        interface=iface,
+        format_up = iface + ": {v4}",
+        format_down = iface + ": down")
+
+for iface in wireless:
+    status.register("wireless",
+        interface=iface,
+        format_up = iface + ": ({quality:.0f}% at {essid}) {v4}",
+        format_down = iface + ": down")
+
 
 status.register("disk",
     path="/",
