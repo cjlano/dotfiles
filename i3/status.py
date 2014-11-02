@@ -5,7 +5,6 @@ status = Status(standalone=True)
 
 # French locale
 locale.setlocale(locale.LC_ALL,('fr_FR', 'UTF-8'))
-
 # There's a clock, too
 status.register("clock",
     format = "%A %d/%m/%Y %H:%M")
@@ -29,15 +28,23 @@ status.register("temp",
 #        },
 #    )
 
-#status.register("wireless",
-#    interface="wlo1",
-#    format_up = "W: ({quality:.0f}% at {essid}) {v4}",
-#    format_down = "W: down")
 
-status.register("network",
-    interface="eth1",
-    format_up = "E: {v4}",
-    format_down = "E: down")
+import os
+netdir = '/sys/class/net/'
+wireless = [iface for iface in os.listdir(netdir) if os.path.isdir(netdir + iface + '/wireless')]
+wired = [iface for iface in os.listdir(netdir) if iface not in wireless + ['lo']]
+
+for iface in wired:
+    status.register("network",
+        interface=iface,
+        format_up = iface + ": {v4}",
+        format_down = iface + ": down")
+
+for iface in wireless:
+    status.register("wireless",
+        interface=iface,
+        format_up = iface + ": ({quality:.0f}% at {essid}) {v4}",
+        format_down = iface + ": down")
 
 status.register("disk",
     path="/",
@@ -88,7 +95,6 @@ status.register("pulseaudio",
 #
 #status.register("mail",
 #    backends=[ imap ])
-
 
 status.register("shell", command="$HOME/bin/wirgrid_date.py", interval=1)
 
