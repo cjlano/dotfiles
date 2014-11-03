@@ -28,7 +28,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+A kill
+bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -69,6 +69,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
