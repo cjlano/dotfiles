@@ -11,7 +11,9 @@ status.register("clock",
     format = "%A %d/%m/%Y %H:%M")
 
 status.register("load",
-    format="{avg1}")
+        format="CPU: {avg1}")
+# status.register("mem_bar")
+status.register("mem", format="RAM: {percent_used_mem}%")
 status.register("temp",
     format="{temp:.0f}°C")
 
@@ -87,6 +89,8 @@ status.register("pulseaudio",
 #status.register("mail",
 #    backends=[ imap ])
 
+
+status.register("shell", command="$HOME/bin/wirgrid_date.py", interval=1)
 
 # start the handler
 status.run()
