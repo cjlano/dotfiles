@@ -175,10 +175,16 @@ bindsym $mod+y move workspace to output right
 
 # Assign Firefox to workspace 3 (use xprop to get WM_CLASS(STRING))
 assign [class="^Firefox$"] 3
+assign [class="^Gitk$"] 5
+assign [class="^Meld$"] 6
 
 # Calc is floating
 for_window [title="^Calculat*"] floating enable
-bindsym $mod+c              exec gnome-calculator
+for_window [title="^galculator$"] floating enable
+# Eclipse splash
+for_window [class="Java" title="^Eclipse\s?(SDK )?$"] floating enable
+#bindsym $mod+c              exec gnome-calculator
+bindsym $mod+c              exec galculator
 # Autostart
 exec ~/.i3/autostart
 
