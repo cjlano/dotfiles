@@ -16,3 +16,9 @@ else
                                "VGA1: $VGA_YES\n$DVI_PORT: $DVI_YES"
 fi
 
+# xautolock
+# Turn off screen 30s before lock
+xautolock -detectsleep \
+  -time 10 -locker "~/.i3/lock" \
+  -notify 30 \
+  -notifier "xset dpms force off" &

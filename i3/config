@@ -157,6 +157,8 @@ bar {
         output DVI-1-1
 }
 
+# Lock
+bindsym $mod+Ctrl+l            exec  ~/.i3/lock
 # Suspend
 bindsym $mod+End               exec  ~/.i3/suspend
 # Volume mutimedia keys

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+IMAGE=~/Images/lock.png
+
+# lock the screen
+i3lock --tiling --dpms --image=$IMAGE
+
