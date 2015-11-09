@@ -150,11 +150,11 @@ bindsym $mod+r mode "resize"
 bar {
         #status_command i3status
         status_command python3 ~/.i3/status.py
-        output HDMI1
+        output VGA1
 }
 bar {
         status_command i3status --config ~/.i3/i3status_light.conf
-        output VGA1
+        output DVI-1-1
 }
 
 # Suspend
