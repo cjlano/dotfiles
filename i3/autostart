@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# xautolock
+# Turn off screen 30s before lock
+xautolock -detectsleep \
+  -time 10 -locker "~/.i3/lock" \
+  -notify 30 \
+  -notifier "xset dpms force off" &

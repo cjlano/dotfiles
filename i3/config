@@ -28,7 +28,7 @@ floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal #i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+A kill
+bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -fn "-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
@@ -157,12 +157,15 @@ bar {
 }
 
 bindsym XF86HomePage           exec firefox
-bindsym $mod+End               exec  systemctl hibernate
 # Brightness multimedia keys
 # bindsym XF86MonBrightnessDown  exec  ~/.bin/backlight.sh -
 # bindsym XF86MonBrightnessUp    exec  ~/.bin/backlight.sh +
 # bindsym $mod+ugrave            exec  ~/.bin/backlight.sh -
 # bindsym $mod+asterisk          exec  ~/.bin/backlight.sh +
+# Lock
+bindsym $mod+Ctrl+l            exec  ~/.i3/lock
+# Suspend
+bindsym $mod+End               exec  ~/.i3/suspend
 # Volume mutimedia keys
 # bindsym XF86AudioLowerVolume   exec  amixer set Master 5%-
 # bindsym XF86AudioRaiseVolume   exec  amixer set Master 5%+
@@ -182,4 +185,8 @@ bindsym $mod+y move workspace to output right
 # Assign Firefox to workspace 2 (use xprop to get WM_CLASS(STRING))
 assign [class="^Firefox$"] 2
 
+# Autostart
+exec ~/.i3/autostart
+
+# Dunst
 exec dunst

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+IMAGE=~/Images/archlinux-background.png
+
+# lock the screen
+i3lock --tiling --dpms --image=$IMAGE
+
