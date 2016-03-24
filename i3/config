@@ -193,4 +193,6 @@ exec ~/.i3/autostart
 # Dunst
 exec dunst
 
+# Pidgin
+exec pidgin
 
