@@ -1,3 +1,4 @@
+import os
 from i3pystatus import Status
 #from . import Status
 status = Status(standalone=True)
@@ -8,14 +9,24 @@ status.register("clock",
 
 status.register("load",
     format="{avg1}")
+
+thermaldir = '/sys/class/thermal/'
+try:
+    thermal = next(t for t in os.listdir(thermaldir) if 'x86_pkg_temp' in \
+                   next(open(thermaldir+t+'/type')))
+except StopIteration:
+    thermal = 'thermal_zone0'
+
 status.register("temp",
-    format="{temp:.0f}°C")
+    format="{temp:.0f}°C",
+    file=thermaldir + thermal + '/temp'
+    )
 
 # the battery status checker module
 status.register("battery",
     format = "{status}{percentage:.0f}% {remaining}",
     alert=True,
-    alert_percentage=8,
+    alert_percentage=15,
     status={
         "DIS": "↓",
         "CHR": "↑",
@@ -24,7 +35,6 @@ status.register("battery",
     )
 
 
-import os
 netdir = '/sys/class/net/'
 wireless = [iface for iface in os.listdir(netdir) if os.path.isdir(netdir + iface + '/wireless')]
 wired = [iface for iface in os.listdir(netdir) if iface not in wireless + ['lo']]
@@ -36,18 +46,21 @@ for iface in wired:
         format_down = iface + ": down")
 
 for iface in wireless:
-    status.register("wireless",
+    status.register("network",
         interface=iface,
+        dynamic_color = False,
         format_up = iface + ": ({quality:.0f}% at {essid}) {v4}",
         format_down = iface + ": down")
 
 
 status.register("disk",
     path="/",
+    display_limit = 100,
+    critical_limit = 50,
     format = "/: {avail:.0f}G {percentage_used:.0f}%")
 
 status.register("backlight",
-    format="\u263c{brightness}%", #\u263c: white sun with rays
+        format="\u263c{percentage:.0f}%", #\u263c: white sun with rays
     backlight="intel_backlight")
 
 # Note: requires pyalsaaudio (AUR)
@@ -61,13 +74,13 @@ status.register("pulseaudio",
 # Shows mpd status
 # Format:
 # Cloud connected▶Reroute to Remain
-status.register("mpd",
-        format="{artist}{status}{title}",
-        status={
-            "pause": "▷",
-            "play": "▶",
-            "stop": "◾",
-            },)
+# status.register("mpd",
+#         format="{artist}{status}{title}",
+#         status={
+#             "pause": "▷",
+#             "play": "▶",
+#             "stop": "◾",
+#             },)
 
 # You can let i3pystatus check for new mail using the mail module
 # It can check multiple sources with multiple backends
@@ -92,6 +105,7 @@ status.register("mpd",
 #status.register("mail",
 #    backends=[ imap ])
 
+status.register("pomodoro", sound='')
 
 # start the handler
 status.run()

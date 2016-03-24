@@ -25,13 +25,13 @@ font pango:Terminus 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal #i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+A kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -fn "-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -159,14 +159,16 @@ bar {
 bindsym XF86HomePage           exec firefox
 bindsym $mod+End               exec  systemctl hibernate
 # Brightness multimedia keys
-bindsym XF86MonBrightnessDown  exec  ~/.bin/backlight.sh -
-bindsym XF86MonBrightnessUp    exec  ~/.bin/backlight.sh +
-bindsym $mod+ugrave            exec  ~/.bin/backlight.sh -
-bindsym $mod+asterisk          exec  ~/.bin/backlight.sh +
+# bindsym XF86MonBrightnessDown  exec  ~/.bin/backlight.sh -
+# bindsym XF86MonBrightnessUp    exec  ~/.bin/backlight.sh +
+# bindsym $mod+ugrave            exec  ~/.bin/backlight.sh -
+# bindsym $mod+asterisk          exec  ~/.bin/backlight.sh +
 # Volume mutimedia keys
-bindsym XF86AudioLowerVolume   exec  amixer set Master 5%-
-bindsym XF86AudioRaiseVolume   exec  amixer set Master 5%+
-bindsym XF86AudioMute          exec  amixer set Master toggle
+# bindsym XF86AudioLowerVolume   exec  amixer set Master 5%-
+# bindsym XF86AudioRaiseVolume   exec  amixer set Master 5%+
+# bindsym XF86AudioMute          exec  amixer set Master toggle
+bindsym $mod+ugrave            exec  amixer set Master 5%-
+bindsym $mod+asterisk          exec  amixer set Master 5%+
 # Audio multimedia keys bound to mpd with mpc
 bindsym XF86AudioPlay          exec  mpc toggle
 bindsym XF86AudioNext          exec  mpc next
