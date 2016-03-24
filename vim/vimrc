@@ -1,14 +1,28 @@
+" Load Pathogen (https://github.com/tpope/vim-pathogen)
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" Dark background
 set background=dark
+
+" Tab
 set autoindent
 set smartindent
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+
+" Search
+set ignorecase " Ignore case on search
+set smartcase " Re-enable case sensitivity when search term has a CAP
+set incsearch " Hightlight while typing
+set hlsearch " Hightlight search
+
+" Lustry Explorer
+set hidden
+let mapleader = ","
 
 "set mouse=a
 "set clipboard=unnamed
@@ -33,4 +47,6 @@ match ExtraWhitespace /\s\+\%#\@<!$/
 
 
 let g:netrw_sort_sequence = '[\/]$,\.h$,\.c$,\.xc$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$'
+
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
