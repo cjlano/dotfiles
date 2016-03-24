@@ -1,19 +1,17 @@
 #!/bin/sh
-VGA_YES=0
-DVI_YES=0
+HDMI1_YES=0
+VGA1_YES=0
 
-DVI_PORT=`xrandr | grep "^DVI" | cut -d " " -f 1`
+xrandr | grep -q "HDMI1 connected" && HDMI1_YES=1
+xrandr | grep -q "VGA1 connected" && VGA1_YES=1
 
-xrandr | grep -q "$DVI_PORT connected" && DVI_YES=1
-xrandr | grep -q "VGA1 connected" && VGA_YES=1
-
-if [ $VGA_YES -eq 1 ] && [ $DVI_YES -eq 1 ]; then
-    xrandr --output VGA1 --auto --right-of $DVI_PORT
+if [ $HDMI1_YES -eq 1 ] && [ $VGA1_YES -eq 1 ]; then
+    xrandr --output HDMI1 --auto --left-of VGA1
     notify-send -t 0 -u low "xrandr configuration OK" \
-                            "VGA1: $VGA_YES\n$DVI_PORT: $DVI_YES"
+                            "HDMI1: $HDMI1_YES\nVGA1: $VGA1_YES"
 else
     notify-send -t 0 -u normal "xrandr did not find output" \
-                               "VGA1: $VGA_YES\n$DVI_PORT: $DVI_YES"
+                               "HDMI1: $HDMI1_YES\nVGA1: $VGA1_YES"
 fi
 
 # xautolock

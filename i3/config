@@ -154,7 +154,7 @@ bar {
 }
 bar {
         status_command i3status --config ~/.i3/i3status_light.conf
-        output DVI-1-1
+        output HDMI1
 }
 
 # Lock
