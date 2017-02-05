@@ -1,5 +1,6 @@
 import os
 from i3pystatus import Status
+from i3pystatus.updates import pacman
 #from . import Status
 status = Status(standalone=True)
 
@@ -106,6 +107,12 @@ status.register("pulseaudio",
 #    backends=[ imap ])
 
 status.register("pomodoro", sound='')
+
+
+status.register("updates",
+                format = "Updates: {count}",
+                format_no_updates = "No updates",
+                backends = [pacman.Pacman()])
 
 # start the handler
 status.run()
