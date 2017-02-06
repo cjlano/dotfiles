@@ -29,9 +29,12 @@ bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+Q kill
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+bindsym button3 floating toggle
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -fn 'Terminus-9'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -162,8 +165,8 @@ bindsym $mod+Ctrl+l            exec  ~/.i3/lock
 # Suspend
 bindsym $mod+End               exec  ~/.i3/suspend
 # Volume mutimedia keys
-bindsym $mod+ugrave            exec  amixer set Master 5%-
-bindsym $mod+asterisk          exec  amixer set Master 5%+
+bindsym $mod+ugrave            exec  amixer -c 1 set Master 5%-
+bindsym $mod+asterisk          exec  amixer -c 1 set Master 5%+
 #bindsym XF86AudioMute          exec  amixer set Master toggle
 # Audio multimedia keys bound to mpd with mpc
 #bindsym XF86AudioPlay          exec  mpc toggle
@@ -185,14 +188,17 @@ for_window [title="^Calculat*"] floating enable
 for_window [title="^galculator$"] floating enable
 # Eclipse splash
 for_window [class="Java" title="^Eclipse\s?(SDK )?$"] floating enable
+# Simplicity Studio splash
+# for_window [title="Studio"] floating enable border toggle
 #bindsym $mod+c              exec gnome-calculator
 bindsym $mod+c              exec galculator
 # Autostart
 exec ~/.i3/autostart
 
 # Dunst
-exec dunst
+#exec dunst
 
 # Pidgin
 exec pidgin
+exec linphone
 
