@@ -201,4 +201,4 @@ exec ~/.i3/autostart
 # Pidgin
 exec pidgin
 exec linphone
-
+exec nextcloud

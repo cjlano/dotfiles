@@ -6,7 +6,7 @@ xrandr | grep -q "HDMI1 connected" && HDMI1_YES=1
 xrandr | grep -q "VGA1 connected" && VGA1_YES=1
 
 if [ $HDMI1_YES -eq 1 ] && [ $VGA1_YES -eq 1 ]; then
-    xrandr --output HDMI1 --auto --left-of VGA1
+    xrandr --output HDMI1 --auto --right-of VGA1
     notify-send -t 0 -u low "xrandr configuration OK" \
                             "HDMI1: $HDMI1_YES\nVGA1: $VGA1_YES"
 else
