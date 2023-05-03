@@ -46,6 +46,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 #export PATH="/opt/toolchains/arm-2013.11/bin:/home/jca/bin:/home/jca/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 #export PATH="/home/jca/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+# Preserve MANPATH if you already defined it somewhere in your config.
+# # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -54,7 +62,7 @@ export LANG=en_US.UTF-8
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages z sudo command-not-found gpg-agent docker common-aliases tmux rust rustup)
+plugins=(git colored-man-pages z direnv sudo command-not-found gpg-agent docker common-aliases tmux rust virtualenv aws golang)
 
 source $ZSH/oh-my-zsh.sh
 
