@@ -1,5 +1,5 @@
 " Load Pathogen (https://github.com/tpope/vim-pathogen)
-execute pathogen#infect()
+" execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -24,6 +24,7 @@ set hlsearch " Hightlight search
 set hidden
 let mapleader = ","
 
+set mouse=
 "set mouse=a
 "set clipboard=unnamed
 
